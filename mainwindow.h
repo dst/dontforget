@@ -4,19 +4,17 @@
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+    class CentralWidget;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
     
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-    
+    explicit MainWindow(QWidget *parent = NULL);
+
 private:
-    Ui::MainWindow *ui;
+    Ui::CentralWidget* ui;
 };
 
 #endif // MAINWINDOW_H

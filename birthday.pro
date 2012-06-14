@@ -10,9 +10,9 @@ TARGET = birthday
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    mainwindow.cpp
 
 HEADERS  += mainwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += CentralWidget.ui
