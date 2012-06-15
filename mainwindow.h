@@ -15,6 +15,12 @@ public:
 
 private:
     Ui::CentralWidget* ui;
+    QAction* addEventAction;
+
+private:
+    void createActions();
+    void createMenu();
+    void createToolbar();
 };
 
 #endif // MAINWINDOW_H
