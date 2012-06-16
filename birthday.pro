@@ -11,8 +11,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    birthdayevent.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    birthdayevent.h
 
 FORMS    += CentralWidget.ui
