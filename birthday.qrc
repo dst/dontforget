@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>birthday_pl.qm</file>
+        <file>birthday_en.qm</file>
+    </qresource>
+</RCC>

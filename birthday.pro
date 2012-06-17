@@ -24,3 +24,8 @@ HEADERS  += \
 
 FORMS    += \
     CalendarWidget.ui
+
+TRANSLATIONS = birthday_pl.ts \
+               birthday_en.ts
+
+RESOURCES = birthday.qrc
