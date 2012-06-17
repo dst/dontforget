@@ -11,7 +11,8 @@
 #include <QTextFormat>
 #include <QKeyEvent>
 
-static int NR_YEARS_IN_FUTURE = 2;
+static int NR_YEARS_IN_PAST = 2;
+static int NR_YEARS_IN_FUTURE = 3;
 
 CalendarWidget::CalendarWidget(QWidget *parent) :
     QWidget(parent), ui(new Ui::CalendarWidget()) {
@@ -33,27 +34,25 @@ void CalendarWidget::keyPressEvent(QKeyEvent *event) {
 }
 
 void CalendarWidget::addEvent(const BirthdayEvent &event) {
-    QList<BirthdayEvent> eventSerie = event.getNextEvents(NR_YEARS_IN_FUTURE);
-    eventSerie << event;
+    QList<QDate> dates = event.getDatesWithin(NR_YEARS_IN_PAST, NR_YEARS_IN_FUTURE);
 
-    foreach (const BirthdayEvent& event, eventSerie) {
-        events.insert(event.getDate(), event);
-        markDateWithEvent(event.getDate());
+    foreach (const QDate& date, dates) {
+        events.insert(date, event);
+        markDateWithEvent(date);
     }
 
     dataChanged();
 }
 
 void CalendarWidget::removeEvent(const BirthdayEvent &event) {
-    QList<BirthdayEvent> eventSerie = event.getNextEvents(NR_YEARS_IN_FUTURE);
-    eventSerie << event;
+    QList<QDate> dates = event.getDatesWithin(NR_YEARS_IN_PAST, NR_YEARS_IN_FUTURE);
 
-    foreach (const BirthdayEvent& event, eventSerie) {
-        int count = events.remove(event.getDate(), event);
+    foreach (const QDate& date, dates) {
+        int count = events.remove(date, event);
         Q_ASSERT(count == 1);
 
-        if (!existEventForDate(event.getDate())) {
-            markDateWithoutEvent(event.getDate());
+        if (!existEventForDate(date)) {
+            markDateWithoutEvent(date);
         }
     }
 

@@ -14,22 +14,19 @@
 class BirthdayEvent {
 public:
     BirthdayEvent() {};
-    BirthdayEvent(const QDate& date, const QString& name);
+    BirthdayEvent(int month, int day, const QString& name);
 
 private:
-    QDate date;
+    int month;
+    int day;
     QString name;
 
 public:
-    const QDate& getDate() const {
-        return date;
-    }
-
     const QString& getName() const {
         return name;
     }
 
-    QList<BirthdayEvent> getNextEvents(int count) const;
+    QList<QDate> getDatesWithin(int yearsPast, int yearsFuture) const;
 
     bool operator==(const BirthdayEvent& event) const;
 

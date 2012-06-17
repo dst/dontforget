@@ -5,36 +5,34 @@
 
 #include "BirthdayEvent.h"
 
-BirthdayEvent::BirthdayEvent(const QDate &date, const QString &name):
-    date(date), name(name) {
+BirthdayEvent::BirthdayEvent(int month, int day, const QString& name):
+    month(month), day(day), name(name) {
 
 }
 
-QList<BirthdayEvent> BirthdayEvent::getNextEvents(int count) const {
-    QDate maxDate = QDate::currentDate().addYears(count);
+QList<QDate> BirthdayEvent::getDatesWithin(int yearsPast, int yearsFuture) const {
+    int currentYear = QDate::currentDate().year();
+    QDate date(currentYear - yearsPast, month, day);
+    QDate maxDate = date.addYears(yearsFuture + yearsPast);
 
-    BirthdayEvent eventCopy(*this);
-    QDate eventDate = getDate();
-
-    QList<BirthdayEvent> nextEvents;
-    while (eventDate < maxDate) {
-        eventDate = eventDate.addYears(1);
-        eventCopy.date = eventDate;
-        nextEvents.append(eventCopy);
+    QList<QDate> dates;
+    while (date < maxDate) {
+        dates.append(date);
+        date = date.addYears(1);
     }
 
-    return nextEvents;
+    return dates;
 }
 
 bool BirthdayEvent::operator ==(const BirthdayEvent &event) const {
-    return name == event.name;
+    return day == event.day && month == event.month && name == event.name;
 }
 
 QDataStream& operator<<(QDataStream &stream, const BirthdayEvent &event) {
-    return stream << event.date << event.name;
+    return stream << event.day << event.month << event.name;
 }
 
 QDataStream& operator>>(QDataStream &stream, BirthdayEvent &event) {
-    return stream >> event.date >> event.name;
+    return stream >> event.day >> event.month >> event.name;
 }
 

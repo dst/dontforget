@@ -42,12 +42,7 @@ void BirthdayStorage::addEvent(const BirthdayEvent &event) {
 }
 
 void BirthdayStorage::removeEvent(const BirthdayEvent &event) {
-    // We need original event (date is important)
-    int index = events.indexOf(event);
-    BirthdayEvent baseEvent = events[index];
-
     int count = events.removeAll(event);
     Q_ASSERT(count == 1);
-
-    emit eventRemoved(baseEvent);
+    emit eventRemoved(event);
 }
