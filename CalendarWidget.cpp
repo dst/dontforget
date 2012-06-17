@@ -31,8 +31,14 @@ void CalendarWidget::keyPressEvent(QKeyEvent *event) {
 }
 
 void CalendarWidget::addEvent(const BirthdayEvent &event) {
-    events.insert(event.getDate(), event);
-    markDateWithEvent(event.getDate());
+    QList<BirthdayEvent> eventSerie = event.getNextEvents();
+    eventSerie << event;
+
+    foreach (const BirthdayEvent& event, eventSerie) {
+        events.insert(event.getDate(), event);
+        markDateWithEvent(event.getDate());
+    }
+
     dataChanged();
 }
 

@@ -8,6 +8,7 @@
 
 #include <QDataStream>
 #include <QDate>
+#include <QList>
 #include <QMetaType>
 
 class BirthdayEvent {
@@ -28,7 +29,9 @@ public:
         return name;
     }
 
-    bool operator==(const BirthdayEvent& event);
+    QList<BirthdayEvent> getNextEvents() const;
+
+    bool operator==(const BirthdayEvent& event) const;
 
     friend QDataStream& operator<< (QDataStream& stream, const BirthdayEvent& event);
     friend QDataStream& operator>> (QDataStream& stream, BirthdayEvent& event);
