@@ -8,7 +8,7 @@
 #include <QDataStream>
 #include <QFile>
 
-static QString STORAGE_FILE = "birtdayStorage";
+static QString STORAGE_FILE = "birthdayStorage";
 
 BirthdayStorage::BirthdayStorage(QObject *parent) :
     QObject(parent) {
