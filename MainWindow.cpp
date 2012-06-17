@@ -19,9 +19,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent) {
 
     calendar = new CalendarWidget(this);
-    connect(&storage, SIGNAL(birthdayAdded(BirthdayEvent)),
-            calendar, SLOT(addEvent(BirthdayEvent)));
     setCentralWidget(calendar);
+
+    connect(&storage, SIGNAL(eventAdded(BirthdayEvent)),
+            calendar, SLOT(addEvent(BirthdayEvent)));
+    connect(&storage, SIGNAL(eventRemoved(BirthdayEvent)),
+            calendar, SLOT(removeEvent(BirthdayEvent)));
+    connect(calendar, SIGNAL(eventRemoved(BirthdayEvent)),
+            &storage, SLOT(removeEvent(BirthdayEvent)));
 
     createActions();
     createMenu();
@@ -62,7 +67,7 @@ void MainWindow::addEvent() {
     qDebug() << name;
     if (!name.isEmpty()) {
         BirthdayEvent event(calendar->getSelectedDate(), name);
-        storage.addBirthday(event);
+        storage.addEvent(event);
     }
 }
 

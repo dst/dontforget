@@ -15,6 +15,8 @@ namespace Ui {
     class CalendarWidget;
 }
 
+class QListWidgetItem;
+
 class CalendarWidget : public QWidget
 {
     Q_OBJECT
@@ -23,8 +25,15 @@ public:
 
     QDate getSelectedDate();
 
+protected:
+    void keyPressEvent(QKeyEvent *event);
+
+signals:
+    void eventRemoved(const BirthdayEvent& event);
+
 public slots:
     void addEvent(const BirthdayEvent& event);
+    void removeEvent(const BirthdayEvent& event);
     
 private slots:
     void dataChanged();
@@ -36,6 +45,9 @@ private:
 private:
     void appendEvent(const BirthdayEvent& event);
     void markDateWithEvent(const QDate& date);
+    void markDateWithoutEvent(const QDate& date);
+    void deleteSelectedEvent();
+    QListWidgetItem * getSelectedItem();
     
 };
 

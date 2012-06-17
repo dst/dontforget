@@ -32,11 +32,17 @@ void BirthdayStorage::load() {
     }
 
     foreach(const BirthdayEvent& event, events) {
-        emit birthdayAdded(event);
+        emit eventAdded(event);
     }
 }
 
-void BirthdayStorage::addBirthday(const BirthdayEvent &event) {
+void BirthdayStorage::addEvent(const BirthdayEvent &event) {
     events.append(event);
-    emit birthdayAdded(event);
+    emit eventAdded(event);
+}
+
+void BirthdayStorage::removeEvent(const BirthdayEvent &event) {
+    int count = events.removeAll(event);
+    Q_ASSERT(count == 1);
+    emit eventRemoved(event);
 }

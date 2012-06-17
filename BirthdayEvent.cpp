@@ -10,6 +10,10 @@ BirthdayEvent::BirthdayEvent(const QDate &date, const QString &name):
 
 }
 
+bool BirthdayEvent::operator ==(const BirthdayEvent &event) {
+    return name == event.name && date == event.date;
+}
+
 QDataStream& operator<<(QDataStream &stream, const BirthdayEvent &event) {
     return stream << event.date << event.name;
 }

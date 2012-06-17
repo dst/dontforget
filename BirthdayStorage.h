@@ -18,11 +18,14 @@ public:
 
     void save();
     void load();
-    void addBirthday(const BirthdayEvent& event);
+    void addEvent(const BirthdayEvent& event);
+
+public slots:
+    void removeEvent(const BirthdayEvent& event);
     
 signals:
-    void birthdayAdded(const BirthdayEvent& event);
-    void birthdayRemoved(const BirthdayEvent& event);
+    void eventAdded(const BirthdayEvent& event);
+    void eventRemoved(const BirthdayEvent& event);
 
 private:
     QList<BirthdayEvent> events;

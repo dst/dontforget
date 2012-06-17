@@ -8,6 +8,7 @@
 
 #include <QDataStream>
 #include <QDate>
+#include <QMetaType>
 
 class BirthdayEvent {
 public:
@@ -27,10 +28,13 @@ public:
         return name;
     }
 
+    bool operator==(const BirthdayEvent& event);
 
     friend QDataStream& operator<< (QDataStream& stream, const BirthdayEvent& event);
     friend QDataStream& operator>> (QDataStream& stream, BirthdayEvent& event);
 
 };
+
+Q_DECLARE_METATYPE(BirthdayEvent)
 
 #endif // BIRTHDAYEVENT_H
