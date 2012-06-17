@@ -40,7 +40,7 @@ void CalendarWidget::removeEvent(const BirthdayEvent &event) {
     int count = events.remove(event.getDate(), event);
     Q_ASSERT(count == 1);
 
-    if (!events.contains(event.getDate())) {
+    if (!existEventForDate(event.getDate())) {
         markDateWithoutEvent(event.getDate());
     }
 
@@ -58,6 +58,10 @@ void CalendarWidget::dataChanged() {
             appendEvent(event);
         }
     }
+}
+
+bool CalendarWidget::existEventForDate(const QDate &date) {
+    return events.contains(date);
 }
 
 void CalendarWidget::appendEvent(const BirthdayEvent &event) {

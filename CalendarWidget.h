@@ -43,6 +43,7 @@ private:
     QMultiMap<QDate, BirthdayEvent> events;
 
 private:
+    bool existEventForDate(const QDate& date);
     void appendEvent(const BirthdayEvent& event);
     void markDateWithEvent(const QDate& date);
     void markDateWithoutEvent(const QDate& date);
