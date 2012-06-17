@@ -6,6 +6,7 @@
 #ifndef CALENDAR_H
 #define CALENDAR_H
 
+#include <QMultiMap>
 #include <QWidget>
 
 #include "BirthdayEvent.h"
@@ -20,11 +21,21 @@ class CalendarWidget : public QWidget
 public:
     explicit CalendarWidget(QWidget *parent = 0);
 
+    QDate getSelectedDate();
+
 public slots:
-    void birthdayAdded(const BirthdayEvent& event);
+    void addEvent(const BirthdayEvent& event);
     
+private slots:
+    void dataChanged();
+
 private:
     Ui::CalendarWidget* ui;
+    QMultiMap<QDate, BirthdayEvent> events;
+
+private:
+    void appendEvent(const BirthdayEvent& event);
+    void markDateWithEvent(const QDate& date);
     
 };
 

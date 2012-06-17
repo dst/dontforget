@@ -18,9 +18,9 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent) {
 
-    CalendarWidget* calendar = new CalendarWidget();
+    calendar = new CalendarWidget(this);
     connect(&storage, SIGNAL(birthdayAdded(BirthdayEvent)),
-            calendar,   SLOT(birthdayAdded(BirthdayEvent)));
+            calendar, SLOT(addEvent(BirthdayEvent)));
     setCentralWidget(calendar);
 
     createActions();
@@ -58,8 +58,10 @@ void MainWindow::createToolbar() {
 void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
-    BirthdayEvent event(QDate::currentDate(), name);
-    storage.addBirthday(event);
+    if (!name.isEmpty()) {
+        BirthdayEvent event(calendar->getSelectedDate(), name);
+        storage.addBirthday(event);
+    }
 }
 
 

@@ -10,6 +10,8 @@
 
 #include "BirthdayStorage.h"
 
+class CalendarWidget;
+
 class MainWindow : public QMainWindow {
     Q_OBJECT
     
@@ -20,6 +22,7 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private:
+    CalendarWidget* calendar;
     BirthdayStorage storage;
     QAction* addEventAction;
 
