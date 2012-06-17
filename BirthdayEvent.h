@@ -15,6 +15,16 @@ public:
 private:
     QDate date;
     QString name;
+
+public:
+    const QDate& getDate() const {
+        return date;
+    }
+
+    const QString& getName() const {
+        return name;
+    }
+
 };
 
 #endif // BIRTHDAYEVENT_H

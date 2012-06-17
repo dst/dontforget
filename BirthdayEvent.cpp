@@ -3,7 +3,7 @@
 **   Date:   16 Jun 2012
 **************************************************************************/
 
-#include "birthdayevent.h"
+#include "BirthdayEvent.h"
 
 BirthdayEvent::BirthdayEvent(const QDate &date, const QString &name):
     date(date), name(name) {

@@ -8,9 +8,7 @@
 
 #include <QMainWindow>
 
-namespace Ui {
-    class CentralWidget;
-}
+#include "BirthdayStorage.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -22,7 +20,7 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private:
-    Ui::CentralWidget* ui;
+    BirthdayStorage storage;
     QAction* addEventAction;
 
 private:

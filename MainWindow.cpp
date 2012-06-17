@@ -3,10 +3,10 @@
 **   Date:   14 Jun 2012
 **************************************************************************/
 
-#include "mainwindow.h"
+#include "MainWindow.h"
 
-#include "birthdayevent.h"
-#include "ui_CentralWidget.h"
+#include "BirthdayEvent.h"
+#include "CalendarWidget.h"
 
 #include <QCloseEvent>
 #include <QDebug>
@@ -16,12 +16,12 @@
 #include <QWhatsThis>
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::CentralWidget()) {
+    QMainWindow(parent) {
 
-    QWidget* widget = new QWidget(this);
-    ui->setupUi(widget);
-    setCentralWidget(widget);
+    CalendarWidget* calendar = new CalendarWidget();
+    connect(&storage, SIGNAL(birthdayAdded(BirthdayEvent)),
+            calendar,   SLOT(birthdayAdded(BirthdayEvent)));
+    setCentralWidget(calendar);
 
     createActions();
     createMenu();
@@ -58,9 +58,8 @@ void MainWindow::createToolbar() {
 void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
-    BirthdayEvent event(QDate::currentDate(), name); //todo
-
-    ui->listWidget->addItem(name);
+    BirthdayEvent event(QDate::currentDate(), name);
+    storage.addBirthday(event);
 }
 
 
