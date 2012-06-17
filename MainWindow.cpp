@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     statusBar();
 
     setWindowTitle(tr("Birthday manager"));
+
+    storage.load();
 }
 
 void MainWindow::createActions() {
@@ -67,6 +69,6 @@ void MainWindow::addEvent() {
 
 void MainWindow::closeEvent(QCloseEvent *event) {
     qDebug() << "close";
-    //TODO: save
+    storage.save();
     event->accept();
 }

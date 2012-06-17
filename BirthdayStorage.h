@@ -16,6 +16,8 @@ class BirthdayStorage : public QObject {
 public:
     explicit BirthdayStorage(QObject *parent = 0);
 
+    void save();
+    void load();
     void addBirthday(const BirthdayEvent& event);
     
 signals:
