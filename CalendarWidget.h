@@ -49,7 +49,6 @@ private:
     void markDateWithoutEvent(const QDate& date);
     void deleteSelectedEvent();
     QListWidgetItem * getSelectedItem();
-    
 };
 
 #endif // CALENDAR_H

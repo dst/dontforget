@@ -27,7 +27,7 @@ QList<BirthdayEvent> BirthdayEvent::getNextEvents(int count) const {
 }
 
 bool BirthdayEvent::operator ==(const BirthdayEvent &event) const {
-    return name == event.name && date == event.date;
+    return name == event.name;
 }
 
 QDataStream& operator<<(QDataStream &stream, const BirthdayEvent &event) {

@@ -66,6 +66,7 @@ void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
     if (!name.isEmpty()) {
+        //todo: check if name in uniq
         BirthdayEvent event(calendar->getSelectedDate(), name);
         storage.addEvent(event);
     }

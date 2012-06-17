@@ -45,11 +45,16 @@ void CalendarWidget::addEvent(const BirthdayEvent &event) {
 }
 
 void CalendarWidget::removeEvent(const BirthdayEvent &event) {
-    int count = events.remove(event.getDate(), event);
-    Q_ASSERT(count == 1);
+    QList<BirthdayEvent> eventSerie = event.getNextEvents(NR_YEARS_IN_FUTURE);
+    eventSerie << event;
 
-    if (!existEventForDate(event.getDate())) {
-        markDateWithoutEvent(event.getDate());
+    foreach (const BirthdayEvent& event, eventSerie) {
+        int count = events.remove(event.getDate(), event);
+        Q_ASSERT(count == 1);
+
+        if (!existEventForDate(event.getDate())) {
+            markDateWithoutEvent(event.getDate());
+        }
     }
 
     dataChanged();
