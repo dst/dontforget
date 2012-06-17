@@ -9,7 +9,7 @@
 #include <QMultiMap>
 #include <QWidget>
 
-#include "BirthdayEvent.h"
+#include "CalendarEvent.h"
 
 namespace Ui {
     class CalendarWidget;
@@ -29,22 +29,22 @@ protected:
     void keyPressEvent(QKeyEvent *event);
 
 signals:
-    void eventRemoved(const BirthdayEvent& event);
+    void eventRemoved(const CalendarEvent& event);
 
 public slots:
-    void addEvent(const BirthdayEvent& event);
-    void removeEvent(const BirthdayEvent& event);
+    void addEvent(const CalendarEvent& event);
+    void removeEvent(const CalendarEvent& event);
     
 private slots:
     void dataChanged();
 
 private:
     Ui::CalendarWidget* ui;
-    QMultiMap<QDate, BirthdayEvent> events;
+    QMultiMap<QDate, CalendarEvent> events;
 
 private:
     bool existEventForDate(const QDate& date);
-    void appendEvent(const BirthdayEvent& event);
+    void appendEvent(const CalendarEvent& event);
     void markDateWithEvent(const QDate& date);
     void markDateWithoutEvent(const QDate& date);
     void deleteSelectedEvent();

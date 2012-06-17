@@ -8,7 +8,7 @@
 
 #include <QMainWindow>
 
-#include "BirthdayStorage.h"
+#include "EventStorage.h"
 
 class CalendarWidget;
 
@@ -23,7 +23,7 @@ protected:
 
 private:
     CalendarWidget* calendar;
-    BirthdayStorage storage;
+    EventStorage storage;
     QAction* addEventAction;
 
 private:

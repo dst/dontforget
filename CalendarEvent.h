@@ -3,18 +3,18 @@
 **   Date:   16 Jun 2012
 **************************************************************************/
 
-#ifndef BIRTHDAYEVENT_H
-#define BIRTHDAYEVENT_H
+#ifndef CALENDAREVENT_H
+#define CALENDAREVENT_H
 
 #include <QDataStream>
 #include <QDate>
 #include <QList>
 #include <QMetaType>
 
-class BirthdayEvent {
+class CalendarEvent {
 public:
-    BirthdayEvent() {};
-    BirthdayEvent(const QDate& date, const QString& name);
+    CalendarEvent() {};
+    CalendarEvent(const QDate& date, const QString& name);
 
     const QString& getName() const {
         return name;
@@ -23,7 +23,7 @@ public:
     QDate getClosestDate() const;
     QList<QDate> getDatesWithin(int yearsPast, int yearsFuture) const;
 
-    bool operator==(const BirthdayEvent& event) const;
+    bool operator==(const CalendarEvent& event) const;
 
     QString toString() const;
 
@@ -32,10 +32,10 @@ private:
     int day;
     QString name;
 
-    friend QDataStream& operator<< (QDataStream& stream, const BirthdayEvent& event);
-    friend QDataStream& operator>> (QDataStream& stream, BirthdayEvent& event);
+    friend QDataStream& operator<< (QDataStream& stream, const CalendarEvent& event);
+    friend QDataStream& operator>> (QDataStream& stream, CalendarEvent& event);
 };
 
-Q_DECLARE_METATYPE(BirthdayEvent)
+Q_DECLARE_METATYPE(CalendarEvent)
 
-#endif // BIRTHDAYEVENT_H
+#endif // CALENDAREVENT_H

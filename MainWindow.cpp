@@ -5,7 +5,7 @@
 
 #include "MainWindow.h"
 
-#include "BirthdayEvent.h"
+#include "CalendarEvent.h"
 #include "CalendarWidget.h"
 
 #include <QCloseEvent>
@@ -25,12 +25,12 @@ MainWindow::MainWindow(QWidget *parent) :
     calendar = new CalendarWidget(this);
     setCentralWidget(calendar);
 
-    connect(&storage, SIGNAL(eventAdded(BirthdayEvent)),
-            calendar, SLOT(addEvent(BirthdayEvent)));
-    connect(&storage, SIGNAL(eventRemoved(BirthdayEvent)),
-            calendar, SLOT(removeEvent(BirthdayEvent)));
-    connect(calendar, SIGNAL(eventRemoved(BirthdayEvent)),
-            &storage, SLOT(removeEvent(BirthdayEvent)));
+    connect(&storage, SIGNAL(eventAdded(CalendarEvent)),
+            calendar, SLOT(addEvent(CalendarEvent)));
+    connect(&storage, SIGNAL(eventRemoved(CalendarEvent)),
+            calendar, SLOT(removeEvent(CalendarEvent)));
+    connect(calendar, SIGNAL(eventRemoved(CalendarEvent)),
+            &storage, SLOT(removeEvent(CalendarEvent)));
 
     createActions();
     createMenu();
@@ -72,7 +72,7 @@ void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
     if (!name.isEmpty()) {
-        BirthdayEvent event(calendar->getSelectedDate(), name);
+        CalendarEvent event(calendar->getSelectedDate(), name);
         storage.addEvent(event);
     }
 }
@@ -82,8 +82,8 @@ void MainWindow::loadEvents() {
 }
 
 void MainWindow::checkCommingEvents() {
-    QList<BirthdayEvent> closeEvents = storage.findCommingEvents(DAYS_TRESHOLD);
-    foreach (const BirthdayEvent& event, closeEvents) {
+    QList<CalendarEvent> closeEvents = storage.findCommingEvents(DAYS_TRESHOLD);
+    foreach (const CalendarEvent& event, closeEvents) {
         QMessageBox::information(this, tr("Comming event"), event.toString());
     }
 }

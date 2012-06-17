@@ -3,18 +3,18 @@
 **   Date:   17 Jun 2012
 **************************************************************************/
 
-#include "BirthdayStorage.h"
+#include "EventStorage.h"
 
 #include <QDataStream>
 #include <QFile>
 
 static QString STORAGE_FILE = "birthdayStorage";
 
-BirthdayStorage::BirthdayStorage(QObject *parent) :
+EventStorage::EventStorage(QObject *parent) :
     QObject(parent) {
 }
 
-void BirthdayStorage::save() {
+void EventStorage::save() {
     QFile file(STORAGE_FILE);
     if (file.open(QIODevice::WriteOnly)) {
         QDataStream out(&file);
@@ -23,7 +23,7 @@ void BirthdayStorage::save() {
     }
 }
 
-void BirthdayStorage::load() {
+void EventStorage::load() {
     QFile file(STORAGE_FILE);
     if (file.open(QIODevice::ReadOnly)) {
         QDataStream in(&file);
@@ -31,21 +31,21 @@ void BirthdayStorage::load() {
         in >> events;
     }
 
-    foreach(const BirthdayEvent& event, events) {
+    foreach(const CalendarEvent& event, events) {
         emit eventAdded(event);
     }
 }
 
-void BirthdayStorage::addEvent(const BirthdayEvent &event) {
+void EventStorage::addEvent(const CalendarEvent &event) {
     events.append(event);
     emit eventAdded(event);
 }
 
-QList<BirthdayEvent> BirthdayStorage::findCommingEvents(int days) {
+QList<CalendarEvent> EventStorage::findCommingEvents(int days) {
     QDate now = QDate::currentDate();
 
-    QList<BirthdayEvent> closeEvents;
-    foreach(const BirthdayEvent& event, events) {
+    QList<CalendarEvent> closeEvents;
+    foreach(const CalendarEvent& event, events) {
         if (now.daysTo(event.getClosestDate()) <= days) {
             closeEvents.append(event);
         }
@@ -53,7 +53,7 @@ QList<BirthdayEvent> BirthdayStorage::findCommingEvents(int days) {
     return closeEvents;
 }
 
-void BirthdayStorage::removeEvent(const BirthdayEvent &event) {
+void EventStorage::removeEvent(const CalendarEvent &event) {
     int count = events.removeAll(event);
     Q_ASSERT(count == 1);
     emit eventRemoved(event);

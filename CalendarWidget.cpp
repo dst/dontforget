@@ -33,7 +33,7 @@ void CalendarWidget::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-void CalendarWidget::addEvent(const BirthdayEvent &event) {
+void CalendarWidget::addEvent(const CalendarEvent &event) {
     QList<QDate> dates = event.getDatesWithin(NR_YEARS_IN_PAST, NR_YEARS_IN_FUTURE);
 
     foreach (const QDate& date, dates) {
@@ -44,7 +44,7 @@ void CalendarWidget::addEvent(const BirthdayEvent &event) {
     dataChanged();
 }
 
-void CalendarWidget::removeEvent(const BirthdayEvent &event) {
+void CalendarWidget::removeEvent(const CalendarEvent &event) {
     QList<QDate> dates = event.getDatesWithin(NR_YEARS_IN_PAST, NR_YEARS_IN_FUTURE);
 
     foreach (const QDate& date, dates) {
@@ -66,7 +66,7 @@ void CalendarWidget::dataChanged() {
     ui->listWidget->clear();
 
     if (events.contains(date)) {
-        foreach (const BirthdayEvent& event, events.values(date)) {
+        foreach (const CalendarEvent& event, events.values(date)) {
             appendEvent(event);
         }
     }
@@ -76,7 +76,7 @@ bool CalendarWidget::existEventForDate(const QDate &date) {
     return events.contains(date);
 }
 
-void CalendarWidget::appendEvent(const BirthdayEvent &event) {
+void CalendarWidget::appendEvent(const CalendarEvent &event) {
     QListWidgetItem* item = new QListWidgetItem(event.getName(), ui->listWidget);
     item->setData(Qt::UserRole, QVariant::fromValue(event));
     ui->listWidget->addItem(item);
@@ -99,7 +99,7 @@ void CalendarWidget::deleteSelectedEvent() {
 
     QListWidgetItem* selected = getSelectedItem();
     if (selected != NULL) {
-        BirthdayEvent event = selected->data(Qt::UserRole).value<BirthdayEvent>();
+        CalendarEvent event = selected->data(Qt::UserRole).value<CalendarEvent>();
         emit eventRemoved(event);
     }
 }

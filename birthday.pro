@@ -12,15 +12,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     CalendarWidget.cpp \
-    BirthdayEvent.cpp \
     MainWindow.cpp \
-    BirthdayStorage.cpp
+    CalendarEvent.cpp \
+    EventStorage.cpp
 
 HEADERS  += \
     CalendarWidget.h \
-    BirthdayEvent.h \
-    BirthdayStorage.h \
-    MainWindow.h
+    MainWindow.h \
+    CalendarEvent.h \
+    EventStorage.h
 
 FORMS    += \
     CalendarWidget.ui
