@@ -12,9 +12,12 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QMenuBar>
+#include <QMessageBox>
 #include <QTimer>
 #include <QToolBar>
 #include <QWhatsThis>
+
+static const int DAYS_TRESHOLD = 7;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent) {
@@ -40,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // to not block showing GUI
     QTimer::singleShot(0, this, SLOT(loadEvents()));
+    QTimer::singleShot(0, this, SLOT(checkCommingEvents()));
 }
 
 void MainWindow::createActions() {
@@ -68,7 +72,6 @@ void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
     if (!name.isEmpty()) {
-        //todo: check if name in uniq
         BirthdayEvent event(calendar->getSelectedDate(), name);
         storage.addEvent(event);
     }
@@ -76,6 +79,13 @@ void MainWindow::addEvent() {
 
 void MainWindow::loadEvents() {
     storage.load();
+}
+
+void MainWindow::checkCommingEvents() {
+    QList<BirthdayEvent> closeEvents = storage.findCommingEvents(DAYS_TRESHOLD);
+    foreach (const BirthdayEvent& event, closeEvents) {
+        QMessageBox::information(this, tr("Comming event"), event.toString());
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {

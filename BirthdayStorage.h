@@ -18,7 +18,10 @@ public:
 
     void save();
     void load();
+
     void addEvent(const BirthdayEvent& event);
+
+    QList<BirthdayEvent> findCommingEvents(int days);
 
 public slots:
     void removeEvent(const BirthdayEvent& event);

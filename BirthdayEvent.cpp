@@ -10,9 +10,21 @@ BirthdayEvent::BirthdayEvent(const QDate& date, const QString& name):
 
 }
 
-QList<QDate> BirthdayEvent::getDatesWithin(int yearsPast, int yearsFuture) const {
+QString BirthdayEvent::toString() const {
+    return getClosestDate().toString() + " : " + getName();
+}
+
+QDate BirthdayEvent::getClosestDate() const {
     int currentYear = QDate::currentDate().year();
-    QDate date(currentYear - yearsPast, month, day);
+    QDate date(currentYear, month, day);
+    if (date < QDate::currentDate()) {
+        date = date.addYears(1);
+    }
+    return date;
+}
+
+QList<QDate> BirthdayEvent::getDatesWithin(int yearsPast, int yearsFuture) const {
+    QDate date = getClosestDate().addYears(-yearsPast);
     QDate maxDate = date.addYears(yearsFuture + yearsPast);
 
     QList<QDate> dates;

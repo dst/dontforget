@@ -34,6 +34,7 @@ private:
 private slots:
     void addEvent();
     void loadEvents();
+    void checkCommingEvents();
 };
 
 #endif // MAINWINDOW_H

@@ -41,6 +41,18 @@ void BirthdayStorage::addEvent(const BirthdayEvent &event) {
     emit eventAdded(event);
 }
 
+QList<BirthdayEvent> BirthdayStorage::findCommingEvents(int days) {
+    QDate now = QDate::currentDate();
+
+    QList<BirthdayEvent> closeEvents;
+    foreach(const BirthdayEvent& event, events) {
+        if (now.daysTo(event.getClosestDate()) <= days) {
+            closeEvents.append(event);
+        }
+    }
+    return closeEvents;
+}
+
 void BirthdayStorage::removeEvent(const BirthdayEvent &event) {
     int count = events.removeAll(event);
     Q_ASSERT(count == 1);
