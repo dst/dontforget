@@ -5,8 +5,8 @@
 
 #include "BirthdayEvent.h"
 
-BirthdayEvent::BirthdayEvent(int month, int day, const QString& name):
-    month(month), day(day), name(name) {
+BirthdayEvent::BirthdayEvent(const QDate& date, const QString& name):
+    month(date.month()), day(date.day()), name(name) {
 
 }
 

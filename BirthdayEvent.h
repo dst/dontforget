@@ -14,7 +14,7 @@
 class BirthdayEvent {
 public:
     BirthdayEvent() {};
-    BirthdayEvent(int month, int day, const QString& name);
+    BirthdayEvent(const QDate& date, const QString& name);
 
 private:
     int month;

@@ -67,8 +67,7 @@ void MainWindow::addEvent() {
     qDebug() << name;
     if (!name.isEmpty()) {
         //todo: check if name in uniq
-        QDate selectedDate = calendar->getSelectedDate();
-        BirthdayEvent event(selectedDate.month(),selectedDate.day(), name);
+        BirthdayEvent event(calendar->getSelectedDate(), name);
         storage.addEvent(event);
     }
 }
