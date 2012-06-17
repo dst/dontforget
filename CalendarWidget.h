@@ -17,8 +17,8 @@ namespace Ui {
 
 class QListWidgetItem;
 
-class CalendarWidget : public QWidget
-{
+
+class CalendarWidget : public QWidget {
     Q_OBJECT
 public:
     explicit CalendarWidget(QWidget *parent = 0);
