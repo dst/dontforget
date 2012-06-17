@@ -29,7 +29,7 @@ public:
         return name;
     }
 
-    QList<BirthdayEvent> getNextEvents() const;
+    QList<BirthdayEvent> getNextEvents(int count) const;
 
     bool operator==(const BirthdayEvent& event) const;
 

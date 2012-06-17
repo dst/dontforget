@@ -10,9 +10,8 @@ BirthdayEvent::BirthdayEvent(const QDate &date, const QString &name):
 
 }
 
-QList<BirthdayEvent> BirthdayEvent::getNextEvents() const {
-    // 2 years in advance
-    QDate maxDate = QDate::currentDate().addYears(2);
+QList<BirthdayEvent> BirthdayEvent::getNextEvents(int count) const {
+    QDate maxDate = QDate::currentDate().addYears(count);
 
     BirthdayEvent eventCopy(*this);
     QDate eventDate = getDate();

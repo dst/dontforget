@@ -11,6 +11,8 @@
 #include <QTextFormat>
 #include <QKeyEvent>
 
+static int NR_YEARS_IN_FUTURE = 2;
+
 CalendarWidget::CalendarWidget(QWidget *parent) :
     QWidget(parent), ui(new Ui::CalendarWidget()) {
 
@@ -31,7 +33,7 @@ void CalendarWidget::keyPressEvent(QKeyEvent *event) {
 }
 
 void CalendarWidget::addEvent(const BirthdayEvent &event) {
-    QList<BirthdayEvent> eventSerie = event.getNextEvents();
+    QList<BirthdayEvent> eventSerie = event.getNextEvents(NR_YEARS_IN_FUTURE);
     eventSerie << event;
 
     foreach (const BirthdayEvent& event, eventSerie) {
