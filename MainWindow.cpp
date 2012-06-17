@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QInputDialog>
 #include <QMenuBar>
+#include <QTimer>
 #include <QToolBar>
 #include <QWhatsThis>
 
@@ -37,7 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setWindowTitle(tr("Birthday manager"));
 
-    storage.load();
+    // to not block showing GUI
+    QTimer::singleShot(0, this, SLOT(loadEvents()));
 }
 
 void MainWindow::createActions() {
@@ -72,6 +74,9 @@ void MainWindow::addEvent() {
     }
 }
 
+void MainWindow::loadEvents() {
+    storage.load();
+}
 
 void MainWindow::closeEvent(QCloseEvent *event) {
     qDebug() << "close";
