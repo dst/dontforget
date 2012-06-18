@@ -5,9 +5,11 @@
 
 #include "CalendarWidget.h"
 
+#include "EventListWidgetItem.h"
 #include "ui_CalendarWidget.h"
 
 #include <QDebug>
+#include <QInputDialog>
 #include <QTextFormat>
 #include <QKeyEvent>
 
@@ -18,7 +20,12 @@ CalendarWidget::CalendarWidget(QWidget *parent) :
     QWidget(parent), ui(new Ui::CalendarWidget()) {
 
     ui->setupUi(this);
-    connect(ui->calendarWidget, SIGNAL(selectionChanged()), this, SLOT(dataChanged()));
+
+    connect(ui->calendarWidget, SIGNAL(selectionChanged()),
+            this, SLOT(dataChanged()));
+
+    connect(ui->listWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+            this, SLOT(editEvent(QListWidgetItem*)));
 }
 
 QDate CalendarWidget::getSelectedDate() {
@@ -72,13 +79,26 @@ void CalendarWidget::dataChanged() {
     }
 }
 
+void CalendarWidget::editEvent(QListWidgetItem *item) {
+    EventListWidgetItem* eventItem = (EventListWidgetItem*) item;
+    QString newName = QInputDialog::getText(this, tr("Editing event"), tr("Event name:"),
+        QLineEdit::Normal, eventItem->getEvent().getName());
+
+    qDebug() << "New event name: " << newName;
+
+    CalendarEvent oldEvent = eventItem->getEvent();
+    CalendarEvent newEvent(oldEvent);
+    newEvent.setName(newName);
+
+    emit eventUpdated(oldEvent, newEvent);
+}
+
 bool CalendarWidget::existEventForDate(const QDate &date) {
     return events.contains(date);
 }
 
 void CalendarWidget::appendEvent(const CalendarEvent &event) {
-    QListWidgetItem* item = new QListWidgetItem(event.getName(), ui->listWidget);
-    item->setData(Qt::UserRole, QVariant::fromValue(event));
+    EventListWidgetItem* item = new EventListWidgetItem(event, ui->listWidget);
     ui->listWidget->addItem(item);
 }
 
@@ -97,10 +117,9 @@ void CalendarWidget::markDateWithoutEvent(const QDate &date) {
 void CalendarWidget::deleteSelectedEvent() {
     qDebug() << __FUNCTION__;
 
-    QListWidgetItem* selected = getSelectedItem();
+    EventListWidgetItem* selected = (EventListWidgetItem*) getSelectedItem();
     if (selected != NULL) {
-        CalendarEvent event = selected->data(Qt::UserRole).value<CalendarEvent>();
-        emit eventRemoved(event);
+        emit eventRemoved(selected->getEvent());
     }
 }
 

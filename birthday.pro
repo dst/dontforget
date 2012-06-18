@@ -14,13 +14,15 @@ SOURCES += main.cpp \
     CalendarWidget.cpp \
     MainWindow.cpp \
     CalendarEvent.cpp \
-    EventStorage.cpp
+    EventStorage.cpp \
+    EventListWidgetItem.cpp
 
 HEADERS  += \
     CalendarWidget.h \
     MainWindow.h \
     CalendarEvent.h \
-    EventStorage.h
+    EventStorage.h \
+    EventListWidgetItem.h
 
 FORMS    += \
     CalendarWidget.ui

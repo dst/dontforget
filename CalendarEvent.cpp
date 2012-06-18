@@ -7,7 +7,6 @@
 
 CalendarEvent::CalendarEvent(const QDate& date, const QString& name):
     month(date.month()), day(date.day()), name(name) {
-
 }
 
 QString CalendarEvent::toString() const {

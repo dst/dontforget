@@ -25,12 +25,16 @@ MainWindow::MainWindow(QWidget *parent) :
     calendar = new CalendarWidget(this);
     setCentralWidget(calendar);
 
+    //todo: nowa metoda
     connect(&storage, SIGNAL(eventAdded(CalendarEvent)),
             calendar, SLOT(addEvent(CalendarEvent)));
     connect(&storage, SIGNAL(eventRemoved(CalendarEvent)),
             calendar, SLOT(removeEvent(CalendarEvent)));
+
     connect(calendar, SIGNAL(eventRemoved(CalendarEvent)),
             &storage, SLOT(removeEvent(CalendarEvent)));
+    connect(calendar, SIGNAL(eventUpdated(CalendarEvent,CalendarEvent)),
+            &storage, SLOT(updateEvent(CalendarEvent,CalendarEvent)));
 
     createActions();
     createMenu();

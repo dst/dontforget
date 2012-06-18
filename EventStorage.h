@@ -25,6 +25,7 @@ public:
 
 public slots:
     void removeEvent(const CalendarEvent& event);
+    void updateEvent(const CalendarEvent& oldEvent, const CalendarEvent& newEvent);
     
 signals:
     void eventAdded(const CalendarEvent& event);

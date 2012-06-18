@@ -30,6 +30,7 @@ protected:
 
 signals:
     void eventRemoved(const CalendarEvent& event);
+    void eventUpdated(const CalendarEvent &oldEvent, const CalendarEvent &newEvent);
 
 public slots:
     void addEvent(const CalendarEvent& event);
@@ -37,6 +38,7 @@ public slots:
     
 private slots:
     void dataChanged();
+    void editEvent(QListWidgetItem* item);
 
 private:
     Ui::CalendarWidget* ui;

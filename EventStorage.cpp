@@ -58,3 +58,8 @@ void EventStorage::removeEvent(const CalendarEvent &event) {
     Q_ASSERT(count == 1);
     emit eventRemoved(event);
 }
+
+void EventStorage::updateEvent(const CalendarEvent &oldEvent, const CalendarEvent &newEvent) {
+    removeEvent(oldEvent);
+    addEvent(newEvent);
+}

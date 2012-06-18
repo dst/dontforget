@@ -20,6 +20,10 @@ public:
         return name;
     }
 
+    void setName(const QString& name) {
+        this->name = name;
+    }
+
     QDate getClosestDate() const;
     QList<QDate> getDatesWithin(int yearsPast, int yearsFuture) const;
 
@@ -35,6 +39,8 @@ private:
     friend QDataStream& operator<< (QDataStream& stream, const CalendarEvent& event);
     friend QDataStream& operator>> (QDataStream& stream, CalendarEvent& event);
 };
+
+//todo: wpradzic shared pointer i go uzywac, bo jest duzo kopiowania
 
 Q_DECLARE_METATYPE(CalendarEvent)
 
