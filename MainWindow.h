@@ -27,6 +27,7 @@ private:
     QAction* addEventAction;
 
 private:
+    void makeConnections();
     void createActions();
     void createMenu();
     void createToolbar();

@@ -25,21 +25,11 @@ MainWindow::MainWindow(QWidget *parent) :
     calendar = new CalendarWidget(this);
     setCentralWidget(calendar);
 
-    //todo: nowa metoda
-    connect(&storage, SIGNAL(eventAdded(CalendarEvent)),
-            calendar, SLOT(addEvent(CalendarEvent)));
-    connect(&storage, SIGNAL(eventRemoved(CalendarEvent)),
-            calendar, SLOT(removeEvent(CalendarEvent)));
-
-    connect(calendar, SIGNAL(eventRemoved(CalendarEvent)),
-            &storage, SLOT(removeEvent(CalendarEvent)));
-    connect(calendar, SIGNAL(eventUpdated(CalendarEvent,CalendarEvent)),
-            &storage, SLOT(updateEvent(CalendarEvent,CalendarEvent)));
+    makeConnections();
 
     createActions();
     createMenu();
     createToolbar();
-
     // create status bar (needed for status tips)
     statusBar();
 
@@ -49,6 +39,19 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(0, this, SLOT(loadEvents()));
     QTimer::singleShot(0, this, SLOT(checkCommingEvents()));
 }
+
+void MainWindow::makeConnections() {
+    connect(&storage, SIGNAL(eventAdded(CalendarEvent)),
+            calendar, SLOT(addEvent(CalendarEvent)));
+    connect(&storage, SIGNAL(eventRemoved(CalendarEvent)),
+            calendar, SLOT(removeEvent(CalendarEvent)));
+
+    connect(calendar, SIGNAL(eventRemoved(CalendarEvent)),
+            &storage, SLOT(removeEvent(CalendarEvent)));
+    connect(calendar, SIGNAL(eventUpdated(CalendarEvent,CalendarEvent)),
+            &storage, SLOT(updateEvent(CalendarEvent,CalendarEvent)));
+}
+
 
 void MainWindow::createActions() {
     addEventAction = new QAction(QIcon::fromTheme("add"), tr("&Add"), this);
