@@ -82,11 +82,11 @@ void CalendarWidget::dataChanged() {
 void CalendarWidget::editEvent(QListWidgetItem *item) {
     EventListWidgetItem* eventItem = (EventListWidgetItem*) item;
     QString newName = QInputDialog::getText(this, tr("Editing event"), tr("Event name:"),
-        QLineEdit::Normal, eventItem->getEvent().getName());
+        QLineEdit::Normal, eventItem->getEventName());
 
     qDebug() << "New event name: " << newName;
 
-    CalendarEvent oldEvent = eventItem->getEvent();
+    const CalendarEvent& oldEvent = eventItem->getEvent();
     CalendarEvent newEvent(oldEvent);
     newEvent.setName(newName);
 

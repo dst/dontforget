@@ -13,8 +13,11 @@
 class EventListWidgetItem : public QListWidgetItem {
 public:
     EventListWidgetItem(const CalendarEvent& event, QListWidget* parent = NULL);
+    const CalendarEvent& getEvent() const;
+    const QString& getEventName() const;
 
-    CalendarEvent getEvent() const;
+private:
+    CalendarEvent event;
 };
 
 #endif // EVENTLISTWIDGETITEM_H

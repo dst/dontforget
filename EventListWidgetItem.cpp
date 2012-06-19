@@ -6,12 +6,13 @@
 #include "EventListWidgetItem.h"
 
 EventListWidgetItem::EventListWidgetItem(const CalendarEvent& event, QListWidget* parent):
-        QListWidgetItem(event.getName(), parent) {
-
-    //todo: juz monza trzymac to jako pole w klasie
-    setData(Qt::UserRole, QVariant::fromValue(event));
+    QListWidgetItem(event.getName(), parent), event(event) {
 }
 
-CalendarEvent EventListWidgetItem::getEvent() const {
-    return data(Qt::UserRole).value<CalendarEvent>();
+const CalendarEvent& EventListWidgetItem::getEvent() const {
+    return event;
+}
+
+const QString &EventListWidgetItem::getEventName() const {
+    return event.getName();
 }
