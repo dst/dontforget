@@ -73,8 +73,11 @@ void CalendarWidget::dataChanged() {
     ui->listWidget->clear();
 
     if (events.contains(date)) {
-        foreach (const CalendarEvent& event, events.values(date)) {
-            appendEvent(event);
+        /* the most recently added events go to the end of list */
+        QListIterator<CalendarEvent> eventIt(events.values(date));
+        eventIt.toBack();
+        while(eventIt.hasPrevious()) {
+            appendEvent(eventIt.previous());
         }
     }
 }
