@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createToolbar();
     // create status bar (needed for status tips)
     statusBar();
+    createTrayIcon();
 
     setWindowTitle(tr("Birthday manager"));
 
@@ -69,6 +70,26 @@ void MainWindow::createToolbar() {
     toolBar->addAction(QWhatsThis::createAction(this));
 }
 
+void MainWindow::createTrayIcon() {
+    trayIcon = new QSystemTrayIcon(QIcon::fromTheme("x-office-calendar"), this);
+    addTrayActions();
+    trayIcon->show();
+}
+
+void MainWindow::addTrayActions() {
+    QAction* showAction = new QAction("&Show", this);
+    connect(showAction, SIGNAL(triggered()), this, SLOT(raise()));
+
+    QAction* quitAction = new QAction("&Quit", this);
+    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+
+    QMenu* trayIconMenu = new QMenu(this);
+    trayIconMenu->addAction(showAction);
+    trayIconMenu->addAction(quitAction);
+
+    trayIcon->setContextMenu(trayIconMenu);
+}
+
 void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
@@ -85,6 +106,7 @@ void MainWindow::loadEvents() {
 void MainWindow::checkCommingEvents() {
     QList<CalendarEvent> closeEvents = storage.findCommingEvents(DAYS_TRESHOLD);
     foreach (const CalendarEvent& event, closeEvents) {
+        trayIcon->showMessage(tr("Comming event"), event.toString());
         QMessageBox::information(this, tr("Comming event"), event.toString());
     }
 }

@@ -24,6 +24,7 @@ protected:
 private:
     CalendarWidget* calendar;
     EventStorage storage;
+    QSystemTrayIcon* trayIcon;
     QAction* addEventAction;
 
 private:
@@ -31,6 +32,8 @@ private:
     void createActions();
     void createMenu();
     void createToolbar();
+    void createTrayIcon();
+    void addTrayActions();
 
 private slots:
     void addEvent();
