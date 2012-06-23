@@ -97,6 +97,5 @@ void MainWindow::checkCommingEvents() {
 
 void MainWindow::closeEvent(QCloseEvent *event) {
     qDebug() << "close";
-    storage.save();
     event->accept();
 }

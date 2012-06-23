@@ -38,6 +38,8 @@ void EventStorage::load() {
 
 void EventStorage::addEvent(const CalendarEvent &event) {
     events.append(event);
+    save();
+
     emit eventAdded(event);
 }
 
@@ -56,6 +58,8 @@ QList<CalendarEvent> EventStorage::findCommingEvents(int days) {
 void EventStorage::removeEvent(const CalendarEvent &event) {
     int count = events.removeAll(event);
     Q_ASSERT(count == 1);
+    save();
+
     emit eventRemoved(event);
 }
 
