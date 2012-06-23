@@ -8,14 +8,8 @@
 #include "CalendarEvent.h"
 #include "CalendarWidget.h"
 
-#include <QCloseEvent>
 #include <QDebug>
-#include <QInputDialog>
-#include <QMenuBar>
-#include <QMessageBox>
 #include <QTimer>
-#include <QToolBar>
-#include <QWhatsThis>
 
 static const int DAYS_TRESHOLD = 7;
 

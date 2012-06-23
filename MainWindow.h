@@ -6,7 +6,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include <QtGui>
 
 #include "EventStorage.h"
 
