@@ -21,6 +21,9 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 170, 255)</string>
+       </property>
        <property name="text">
         <string>Events:</string>
        </property>

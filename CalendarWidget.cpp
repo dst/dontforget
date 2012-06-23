@@ -16,6 +16,9 @@
 static int NR_YEARS_IN_PAST = 2;
 static int NR_YEARS_IN_FUTURE = 3;
 
+// nice blue
+static QColor EVENT_COLOR = qRgb(0, 170, 255);
+
 CalendarWidget::CalendarWidget(QWidget *parent) :
     QWidget(parent), ui(new Ui::CalendarWidget()) {
 
@@ -107,7 +110,7 @@ void CalendarWidget::appendEvent(const CalendarEvent &event) {
 
 void CalendarWidget::markDateWithEvent(const QDate &date) {
     QTextCharFormat format;
-    format.setBackground(QBrush(Qt::green));
+    format.setBackground(QBrush(EVENT_COLOR));
     ui->calendarWidget->setDateTextFormat(date, format);
 }
 
