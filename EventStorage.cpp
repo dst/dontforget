@@ -8,7 +8,7 @@
 #include <QDataStream>
 #include <QFile>
 
-static QString STORAGE_FILE = "birthdayStorage";
+static QString STORAGE_FILE = "/home/bulls/mygitrepo/apps/birthday/birthdayStorage";
 
 EventStorage::EventStorage(QObject *parent) :
     QObject(parent) {
