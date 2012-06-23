@@ -9,6 +9,7 @@
 #include "CalendarWidget.h"
 
 #include <QDebug>
+#include <QSettings>
 #include <QTimer>
 
 static const int DAYS_TRESHOLD = 7;
@@ -27,6 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // create status bar (needed for status tips)
     statusBar();
     createTrayIcon();
+
+    readSettings();
 
     setWindowTitle(tr("Birthday manager"));
 
@@ -90,6 +93,21 @@ void MainWindow::addTrayActions() {
     trayIcon->setContextMenu(trayIconMenu);
 }
 
+void MainWindow::writeSettings() {
+    QSettings settings;
+    settings.setValue("size", size());
+    settings.setValue("pos", pos());
+}
+
+void MainWindow::readSettings() {
+    QSettings settings;
+    if (settings.contains("size")) {
+        // not first time
+        resize(settings.value("size").toSize());
+        move(settings.value("pos").toPoint());
+    }
+}
+
 void MainWindow::addEvent() {
     QString name = QInputDialog::getText(this, tr("Adding event"), tr("Event name:"));
     qDebug() << name;
@@ -109,4 +127,10 @@ void MainWindow::checkCommingEvents() {
         trayIcon->showMessage(tr("Comming event"), event.toString());
         QMessageBox::information(this, tr("Comming event"), event.toString());
     }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    qDebug() << "close";
+    writeSettings();
+    event->accept();
 }

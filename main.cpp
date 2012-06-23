@@ -11,16 +11,24 @@
 #include <QTranslator>
 
 void installTranslator(QApplication& app);
+void setAppName();
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-
     installTranslator(app);
+
+    setAppName();
 
     MainWindow mainWin;
     mainWin.show();
     
     return app.exec();
+}
+
+void setAppName() {
+    // QSettings uses it
+    QCoreApplication::setOrganizationName("DarekCorporation");
+    QCoreApplication::setApplicationName("Birthday");
 }
 
 

@@ -14,9 +14,12 @@ class CalendarWidget;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
-
+    
 public:
     explicit MainWindow(QWidget *parent = NULL);
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private:
     CalendarWidget* calendar;
@@ -31,6 +34,9 @@ private:
     void createToolbar();
     void createTrayIcon();
     void addTrayActions();
+
+    void writeSettings();
+    void readSettings();
 
 private slots:
     void addEvent();
