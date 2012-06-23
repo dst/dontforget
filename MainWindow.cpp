@@ -110,8 +110,3 @@ void MainWindow::checkCommingEvents() {
         QMessageBox::information(this, tr("Comming event"), event.toString());
     }
 }
-
-void MainWindow::closeEvent(QCloseEvent *event) {
-    qDebug() << "close";
-    event->accept();
-}

@@ -14,12 +14,9 @@ class CalendarWidget;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
-    
+
 public:
     explicit MainWindow(QWidget *parent = NULL);
-
-protected:
-    void closeEvent(QCloseEvent *event);
 
 private:
     CalendarWidget* calendar;
