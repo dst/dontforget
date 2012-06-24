@@ -31,6 +31,10 @@ CalendarWidget::CalendarWidget(QWidget *parent) :
             this, SLOT(editEvent(QListWidgetItem*)));
 }
 
+CalendarWidget::~CalendarWidget() {
+    delete ui;
+}
+
 QDate CalendarWidget::getSelectedDate() {
     return ui->calendarWidget->selectedDate();
 }
