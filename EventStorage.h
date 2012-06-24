@@ -19,6 +19,7 @@ public:
     void save();
     void load();
 
+    const QList<CalendarEvent>& getEvents() const;
     void addEvent(const CalendarEvent& event);
 
     QList<CalendarEvent> findCommingEvents(int days);

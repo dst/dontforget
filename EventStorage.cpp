@@ -36,6 +36,10 @@ void EventStorage::load() {
     }
 }
 
+const QList<CalendarEvent> &EventStorage::getEvents() const {
+    return events;
+}
+
 void EventStorage::addEvent(const CalendarEvent &event) {
     events.append(event);
     save();

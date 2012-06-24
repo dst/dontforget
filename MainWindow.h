@@ -26,6 +26,7 @@ private:
     EventStorage storage;
     QSystemTrayIcon* trayIcon;
     QAction* addEventAction;
+    QAction* findEventAction;
 
 private:
     void makeConnections();
@@ -40,6 +41,7 @@ private:
 
 private slots:
     void addEvent();
+    void findEvent();
     void loadEvents();
     void checkCommingEvents();
 };

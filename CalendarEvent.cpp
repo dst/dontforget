@@ -10,7 +10,7 @@ CalendarEvent::CalendarEvent(const QDate& date, const QString& name):
 }
 
 QString CalendarEvent::toString() const {
-    return getClosestDate().toString() + " : " + getName();
+    return getName() + " : " + getClosestDate().toString();
 }
 
 QDate CalendarEvent::getClosestDate() const {

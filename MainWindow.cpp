@@ -7,6 +7,7 @@
 
 #include "CalendarEvent.h"
 #include "CalendarWidget.h"
+#include "FindEventDialog.h"
 
 #include <QDebug>
 #include <QSettings>
@@ -58,18 +59,26 @@ void MainWindow::createActions() {
     addEventAction->setStatusTip(hint);
     addEventAction->setToolTip(hint);
     addEventAction->setWhatsThis(hint);
-
     connect(addEventAction, SIGNAL(triggered()), SLOT(addEvent()));
+
+    findEventAction = new QAction(QIcon::fromTheme("find"), tr("&Find"), this);
+    QString findHint = tr("Find event");
+    findEventAction->setShortcut(QKeySequence::Find);
+    findEventAction->setStatusTip(findHint);
+    findEventAction->setToolTip(findHint);
+    connect(findEventAction, SIGNAL(triggered()), SLOT(findEvent()));
 }
 
 void MainWindow::createMenu() {
     QMenu* eventMenu = menuBar()->addMenu(tr("&Events"));
     eventMenu->addAction(addEventAction);
+    eventMenu->addAction(findEventAction);
 }
 
 void MainWindow::createToolbar() {
     QToolBar* toolBar = addToolBar("ToolBar");
     toolBar->addAction(addEventAction);
+    toolBar->addAction(findEventAction);
     toolBar->addAction(QWhatsThis::createAction(this));
 }
 
@@ -115,6 +124,11 @@ void MainWindow::addEvent() {
         CalendarEvent event(calendar->getSelectedDate(), name);
         storage.addEvent(event);
     }
+}
+
+void MainWindow::findEvent() {
+    FindEventDialog findDialog(storage.getEvents(), this);
+    findDialog.exec();
 }
 
 void MainWindow::loadEvents() {
