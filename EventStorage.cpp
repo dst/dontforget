@@ -16,6 +16,9 @@ EventStorage::EventStorage(QObject *parent) :
 
 /* QTextStream (instead of QDateStream), because we want human readable file */
 void EventStorage::save() {
+    // save sorted events
+    qSort(events.begin(), events.end());
+
     QFile file(STORAGE_FILE);
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream out(&file);

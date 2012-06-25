@@ -35,6 +35,11 @@ QList<QDate> CalendarEvent::getDatesWithin(int yearsPast, int yearsFuture) const
     return dates;
 }
 
+bool CalendarEvent::operator <(const CalendarEvent &event) const {
+    // watch out: no year 0
+    return QDate(1, month, day) < QDate(1, event.month, event.day);
+}
+
 bool CalendarEvent::operator ==(const CalendarEvent &event) const {
     return day == event.day && month == event.month && name == event.name;
 }

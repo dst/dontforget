@@ -27,6 +27,7 @@ public:
     QDate getClosestDate() const;
     QList<QDate> getDatesWithin(int yearsPast, int yearsFuture) const;
 
+    bool operator<(const CalendarEvent& event) const;
     bool operator==(const CalendarEvent& event) const;
 
     QString toString() const;
