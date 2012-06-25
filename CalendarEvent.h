@@ -6,7 +6,7 @@
 #ifndef CALENDAREVENT_H
 #define CALENDAREVENT_H
 
-#include <QDataStream>
+#include <QTextStream>
 #include <QDate>
 #include <QList>
 #include <QMetaType>
@@ -36,8 +36,8 @@ private:
     int day;
     QString name;
 
-    friend QDataStream& operator<< (QDataStream& stream, const CalendarEvent& event);
-    friend QDataStream& operator>> (QDataStream& stream, CalendarEvent& event);
+    friend QTextStream& operator<< (QTextStream& stream, const CalendarEvent& event);
+    friend QTextStream& operator>> (QTextStream& stream, CalendarEvent& event);
 };
 
 //todo: wpradzic shared pointer i go uzywac, bo jest duzo kopiowania

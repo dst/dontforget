@@ -39,11 +39,14 @@ bool CalendarEvent::operator ==(const CalendarEvent &event) const {
     return day == event.day && month == event.month && name == event.name;
 }
 
-QDataStream& operator<<(QDataStream &stream, const CalendarEvent &event) {
-    return stream << event.day << event.month << event.name;
+QTextStream& operator<<(QTextStream &stream, const CalendarEvent &event) {
+    return stream << event.day << " " << event.month << " " << event.name << endl;
 }
 
-QDataStream& operator>>(QDataStream &stream, CalendarEvent &event) {
-    return stream >> event.day >> event.month >> event.name;
+QTextStream& operator>>(QTextStream &stream, CalendarEvent &event) {
+    stream >> event.day >> event.month;
+    stream.skipWhiteSpace();
+    event.name = stream.readLine();
+    return stream;
 }
 

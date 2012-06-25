@@ -5,7 +5,7 @@
 
 #include "EventStorage.h"
 
-#include <QDataStream>
+#include <QTextStream>
 #include <QFile>
 
 static QString STORAGE_FILE = "/home/bulls/mygitrepo/apps/birthday/birthdayStorage";
@@ -14,25 +14,27 @@ EventStorage::EventStorage(QObject *parent) :
     QObject(parent) {
 }
 
+/* QTextStream (instead of QDateStream), because we want human readable file */
 void EventStorage::save() {
     QFile file(STORAGE_FILE);
     if (file.open(QIODevice::WriteOnly)) {
-        QDataStream out(&file);
-        out.setVersion(QDataStream::Qt_4_8);
-        out << events;
+        QTextStream out(&file);
+        foreach (const CalendarEvent& event, events) {
+            out << event;
+        }
     }
 }
 
 void EventStorage::load() {
     QFile file(STORAGE_FILE);
     if (file.open(QIODevice::ReadOnly)) {
-        QDataStream in(&file);
-        in.setVersion(QDataStream::Qt_4_8);
-        in >> events;
-    }
-
-    foreach(const CalendarEvent& event, events) {
-        emit eventAdded(event);
+        QTextStream in(&file);
+        CalendarEvent event;
+        while (!in.atEnd()) {
+            in >> event;
+            events.append(event);
+            emit eventAdded(event);
+        }
     }
 }
 
