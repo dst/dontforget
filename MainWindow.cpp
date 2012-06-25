@@ -128,9 +128,9 @@ void MainWindow::addEvent() {
 
 void MainWindow::findEvent() {
     FindEventDialog findDialog(storage.getEvents(), this);
-    if (findDialog.exec() == QDialog::Accepted) {
-        calendar->setSelectedDate(findDialog.getFoundEvent().getClosestDate());
-    }
+    connect(&findDialog, SIGNAL(eventFound(CalendarEvent)),
+            calendar, SLOT(selectEvent(CalendarEvent)));
+    findDialog.exec();
 }
 
 void MainWindow::loadEvents() {

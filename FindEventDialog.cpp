@@ -23,10 +23,6 @@ FindEventDialog::~FindEventDialog() {
     delete ui;
 }
 
-const CalendarEvent FindEventDialog::getFoundEvent() {
-    return foundEvent;
-}
-
 void FindEventDialog::createEventMap(const QList<CalendarEvent> &events) {
     foreach(const CalendarEvent& event, events) {
         description2event[event.toString()] = event;
@@ -46,7 +42,7 @@ void FindEventDialog::goToEvent() {
     qDebug() << "Selected: " << description;
 
     if (description2event.contains(description)) {
-        foundEvent = description2event[description];
+        emit eventFound(description2event[description]);
         accept();
     }
 }

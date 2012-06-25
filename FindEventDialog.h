@@ -22,7 +22,8 @@ public:
     FindEventDialog(const QList<CalendarEvent>& events, QWidget *parent = 0);
     ~FindEventDialog();
 
-    const CalendarEvent getFoundEvent();
+signals:
+    void eventFound(const CalendarEvent& event);
     
 private slots:
     void goToEvent();
@@ -30,7 +31,6 @@ private slots:
 private:
     Ui::FindEventDialog *ui;
     QMap<QString, CalendarEvent> description2event;
-    CalendarEvent foundEvent;
 
 private:
     void createEventMap(const QList<CalendarEvent>& events);

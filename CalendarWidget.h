@@ -25,7 +25,6 @@ public:
     ~CalendarWidget();
 
     QDate getSelectedDate() const;
-    void setSelectedDate(const QDate& date);
 
 protected:
     void keyPressEvent(QKeyEvent *event);
@@ -37,6 +36,7 @@ signals:
 public slots:
     void addEvent(const CalendarEvent& event);
     void removeEvent(const CalendarEvent& event);
+    void selectEvent(const CalendarEvent& event);
     
 private slots:
     void dataChanged();

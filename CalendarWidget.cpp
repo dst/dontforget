@@ -39,10 +39,6 @@ QDate CalendarWidget::getSelectedDate() const {
     return ui->calendarWidget->selectedDate();
 }
 
-void CalendarWidget::setSelectedDate(const QDate &date) {
-    ui->calendarWidget->setSelectedDate(date);
-}
-
 void CalendarWidget::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Delete) {
         deleteSelectedEvent();
@@ -75,6 +71,10 @@ void CalendarWidget::removeEvent(const CalendarEvent &event) {
     }
 
     dataChanged();
+}
+
+void CalendarWidget::selectEvent(const CalendarEvent& event) {
+    ui->calendarWidget->setSelectedDate(event.getClosestDate());
 }
 
 void CalendarWidget::dataChanged() {
