@@ -24,7 +24,8 @@ public:
     explicit CalendarWidget(QWidget *parent = 0);
     ~CalendarWidget();
 
-    QDate getSelectedDate();
+    QDate getSelectedDate() const;
+    void setSelectedDate(const QDate& date);
 
 protected:
     void keyPressEvent(QKeyEvent *event);

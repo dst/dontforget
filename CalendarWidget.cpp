@@ -35,8 +35,12 @@ CalendarWidget::~CalendarWidget() {
     delete ui;
 }
 
-QDate CalendarWidget::getSelectedDate() {
+QDate CalendarWidget::getSelectedDate() const {
     return ui->calendarWidget->selectedDate();
+}
+
+void CalendarWidget::setSelectedDate(const QDate &date) {
+    ui->calendarWidget->setSelectedDate(date);
 }
 
 void CalendarWidget::keyPressEvent(QKeyEvent *event) {

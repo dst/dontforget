@@ -7,6 +7,7 @@
 #define FINDEVENTDIALOG_H
 
 #include <QDialog>
+#include <QMap>
 
 #include"CalendarEvent.h"
 
@@ -20,9 +21,20 @@ class FindEventDialog : public QDialog {
 public:
     FindEventDialog(const QList<CalendarEvent>& events, QWidget *parent = 0);
     ~FindEventDialog();
+
+    const CalendarEvent getFoundEvent();
     
+private slots:
+    void goToEvent();
+
 private:
     Ui::FindEventDialog *ui;
+    QMap<QString, CalendarEvent> description2event;
+    CalendarEvent foundEvent;
+
+private:
+    void createEventMap(const QList<CalendarEvent>& events);
+    void configureEventLineEdit();
 };
 
 #endif // FINDEVENTDIALOG_H
