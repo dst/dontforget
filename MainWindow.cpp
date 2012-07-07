@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     readSettings();
 
+    setWindowIcon(getCalendarIcon());
     setWindowTitle(tr("Birthday manager"));
 
     // to not block showing GUI
@@ -83,7 +84,7 @@ void MainWindow::createToolbar() {
 }
 
 void MainWindow::createTrayIcon() {
-    trayIcon = new QSystemTrayIcon(QIcon::fromTheme("x-office-calendar"), this);
+    trayIcon = new QSystemTrayIcon(getCalendarIcon(), this);
     addTrayActions();
     trayIcon->show();
 }
@@ -100,6 +101,11 @@ void MainWindow::addTrayActions() {
     trayIconMenu->addAction(quitAction);
 
     trayIcon->setContextMenu(trayIconMenu);
+}
+
+const QIcon &MainWindow::getCalendarIcon() const {
+    static QIcon icon = QIcon::fromTheme("x-office-calendar");
+    return icon;
 }
 
 void MainWindow::writeSettings() {

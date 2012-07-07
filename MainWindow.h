@@ -35,6 +35,7 @@ private:
     void createToolbar();
     void createTrayIcon();
     void addTrayActions();
+    const QIcon& getCalendarIcon() const;
 
     void writeSettings();
     void readSettings();
