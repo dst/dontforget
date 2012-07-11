@@ -1,2 +1,6 @@
 birthday.pro.user
 *qm
+.uic
+.rcc
+.moc
+.obj

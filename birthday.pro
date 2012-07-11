@@ -9,6 +9,10 @@ QT       += core gui
 TARGET = birthday
 TEMPLATE = app
 
+OBJECTS_DIR = .obj
+MOC_DIR =.moc
+UI_DIR = .uic
+RCC_DIR = .RCC_DIR
 
 SOURCES += main.cpp \
     CalendarWidget.cpp \
