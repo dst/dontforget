@@ -37,6 +37,8 @@ void installTranslator(QApplication& app) {
     qDebug() << "Detected locale: " << localeName;
 
     QTranslator translator;
-    translator.load(":birthday_" + localeName);
+    if (!translator.load(":birthday_" + localeName)) {
+        Q_ASSERT(!"Translation file not found!");
+    }
     app.installTranslator(&translator);
 }
