@@ -146,8 +146,9 @@ void MainWindow::loadEvents() {
 void MainWindow::checkCommingEvents() {
     QList<CalendarEvent> closeEvents = storage.findCommingEvents(DAYS_TRESHOLD);
     foreach (const CalendarEvent& event, closeEvents) {
-        trayIcon->showMessage(tr("Comming event"), event.toString());
-        QMessageBox::information(this, tr("Comming event"), event.toString());
+        QString title = tr("Comming event");
+        trayIcon->showMessage(title, event.toString());
+        QMessageBox::information(this, title, event.toString());
     }
 }
 
