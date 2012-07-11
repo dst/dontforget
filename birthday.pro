@@ -11,7 +11,7 @@ TEMPLATE = app
 
 OBJECTS_DIR = .obj
 MOC_DIR =.moc
-UI_DIR = .uic
+UI_DIR = .ui
 RCC_DIR = .RCC_DIR
 
 SOURCES += main.cpp \
