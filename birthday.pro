@@ -17,7 +17,7 @@ target.path = ~/bin/
 OBJECTS_DIR = .obj
 MOC_DIR =.moc
 UI_DIR = .ui
-RCC_DIR = .RCC_DIR
+RCC_DIR = .rcc
 
 SOURCES += main.cpp \
     CalendarWidget.cpp \
