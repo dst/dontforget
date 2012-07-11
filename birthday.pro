@@ -9,6 +9,11 @@ QT       += core gui
 TARGET = birthday
 TEMPLATE = app
 
+CONFIG += debug
+
+INSTALLS += target
+target.path = ~/bin/
+
 OBJECTS_DIR = .obj
 MOC_DIR =.moc
 UI_DIR = .ui
