@@ -1,4 +1,6 @@
-birthday.pro.user
+Makefile
+birthday
+birthday.pro.user*
 *qm
 .ui
 .rcc
