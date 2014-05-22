@@ -8,7 +8,8 @@
 #include <QTextStream>
 #include <QFile>
 
-static QString STORAGE_FILE = "/home/bulls/mygitrepo/apps/birthday/birthdayStorage";
+//TODO(dst): it should be configurable
+static QString STORAGE_FILE = "/home/dst/mygitrepo/birthdayStorage";
 
 EventStorage::EventStorage(QObject *parent) :
     QObject(parent) {
