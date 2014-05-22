@@ -8,6 +8,5 @@ $ ./build.sh
 - project's name: birtday -> dontforget
 - birthday -> event (manager, storage, etc.)
 - configurable birthdayStorage location
-- README.txt -> README.md
 - unit tests
 - Qt4 -> Qt5
