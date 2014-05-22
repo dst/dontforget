@@ -1,8 +1,7 @@
 Qt4 project
 
 Compilation:
-$ /usr/bin/qmake-qt4
-$ make -j4
+$ ./build.sh
 
 TODO:
 - project's name: birtday -> dontforget
