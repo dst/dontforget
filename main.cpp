@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 void setAppName() {
     // QSettings uses it
     QCoreApplication::setOrganizationName("DarekCorporation");
-    QCoreApplication::setApplicationName("Birthday");
+    QCoreApplication::setApplicationName("dontforget");
 }
 
 
@@ -37,7 +37,7 @@ void installTranslator(QApplication& app) {
     qDebug() << "Detected locale: " << localeName;
 
     QTranslator translator;
-    QString filename = "i18n/birthday_" + localeName;
+    QString filename = "i18n/dontforget_" + localeName;
     if (!translator.load(filename)) {
         Q_ASSERT(!"Translation file not found!");
     }

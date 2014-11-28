@@ -6,7 +6,7 @@
 
 QT       += core gui widgets
 
-TARGET = birthday
+TARGET = dontforget
 TEMPLATE = app
 
 CONFIG += debug
@@ -30,7 +30,7 @@ include(calendar/calendar.pri)
 include(find/find.pri)
 include(storage/storage.pri)
 
-TRANSLATIONS = i18n/birthday_pl.ts \
-               i18n/birthday_en.ts
+TRANSLATIONS = i18n/dontforget_pl.ts \
+               i18n/dontforget_en.ts
 
-RESOURCES = birthday.qrc
+RESOURCES = dontforget.qrc

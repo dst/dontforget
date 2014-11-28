@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     readSettings();
 
     setWindowIcon(getCalendarIcon());
-    setWindowTitle(tr("Birthday manager"));
+    setWindowTitle(tr("Event manager"));
 
     // to not block showing GUI
     QTimer::singleShot(0, this, SLOT(loadEvents()));

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>i18n/dontforget_pl.qm</file>
+        <file>i18n/dontforget_en.qm</file>
+    </qresource>
+</RCC>
