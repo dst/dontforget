@@ -6,10 +6,10 @@
 #ifndef EVENTSTORAGE_H
 #define EVENTSTORAGE_H
 
-#include <QObject>
-#include <QList>
+#include "model/CalendarEvent.h"
 
-#include "CalendarEvent.h"
+#include <QList>
+#include <QObject>
 
 class EventStorage : public QObject {
     Q_OBJECT

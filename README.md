@@ -12,4 +12,3 @@ TODO
 - birthday -> event (manager, storage, etc.)
 - configurable birthdayStorage location
 - unit tests
-- split files in subdirectories

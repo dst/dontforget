@@ -4,7 +4,6 @@
 **************************************************************************/
 
 #include "CalendarWidget.h"
-
 #include "EventListWidgetItem.h"
 #include "ui_CalendarWidget.h"
 

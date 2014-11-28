@@ -6,10 +6,10 @@
 #ifndef FINDEVENTDIALOG_H
 #define FINDEVENTDIALOG_H
 
+#include"model/CalendarEvent.h"
+
 #include <QDialog>
 #include <QMap>
-
-#include"CalendarEvent.h"
 
 namespace Ui {
 class FindEventDialog;

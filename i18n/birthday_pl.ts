@@ -4,22 +4,22 @@
 <context>
     <name>CalendarWidget</name>
     <message>
-        <location filename="CalendarWidget.ui" line="14"/>
+        <location filename="../calendar/CalendarWidget.ui" line="14"/>
         <source>Form</source>
         <translation>Formularz</translation>
     </message>
     <message>
-        <location filename="CalendarWidget.ui" line="28"/>
+        <location filename="../calendar/CalendarWidget.ui" line="28"/>
         <source>Events:</source>
         <translation>Wydarzenia:</translation>
     </message>
     <message>
-        <location filename="CalendarWidget.cpp" line="98"/>
+        <location filename="../calendar/CalendarWidget.cpp" line="97"/>
         <source>Editing event</source>
         <translation>Zmiana wydarzenia</translation>
     </message>
     <message>
-        <location filename="CalendarWidget.cpp" line="98"/>
+        <location filename="../calendar/CalendarWidget.cpp" line="97"/>
         <source>Event name:</source>
         <translation>Nazwa wydarzenia:</translation>
     </message>
@@ -27,12 +27,12 @@
 <context>
     <name>FindEventDialog</name>
     <message>
-        <location filename="FindEventDialog.ui" line="14"/>
+        <location filename="../find/FindEventDialog.ui" line="14"/>
         <source>Searching event</source>
         <translation>Szukanie wydarzenia</translation>
     </message>
     <message>
-        <location filename="FindEventDialog.ui" line="35"/>
+        <location filename="../find/FindEventDialog.ui" line="35"/>
         <source>Event:</source>
         <translation>Wydarzenie:</translation>
     </message>
@@ -40,47 +40,47 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="MainWindow.cpp" line="36"/>
+        <location filename="../MainWindow.cpp" line="36"/>
         <source>Birthday manager</source>
         <translation>Zarządca ważnych dat</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="57"/>
+        <location filename="../MainWindow.cpp" line="57"/>
         <source>&amp;Add</source>
         <translation>&amp;Dodaj</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="59"/>
+        <location filename="../MainWindow.cpp" line="59"/>
         <source>Add event to calendar</source>
         <translation>Dodaj zdarzenie do kalendarza</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="65"/>
+        <location filename="../MainWindow.cpp" line="65"/>
         <source>&amp;Find</source>
         <translation>&amp;Znajdź</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="66"/>
+        <location filename="../MainWindow.cpp" line="66"/>
         <source>Find event</source>
         <translation>Znajdź wydarzenie</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="74"/>
+        <location filename="../MainWindow.cpp" line="74"/>
         <source>&amp;Events</source>
         <translation>&amp;Wydarzenia</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="127"/>
+        <location filename="../MainWindow.cpp" line="127"/>
         <source>Adding event</source>
         <translation>Dodawanie zdarzenia</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="127"/>
+        <location filename="../MainWindow.cpp" line="127"/>
         <source>Event name:</source>
         <translation>Nazwa wydarzenia:</translation>
     </message>
     <message>
-        <location filename="MainWindow.cpp" line="149"/>
+        <location filename="../MainWindow.cpp" line="149"/>
         <source>Comming event</source>
         <translation>Nadchodzące wydarzenia</translation>
     </message>

@@ -6,7 +6,7 @@
 #ifndef EVENTLISTWIDGETITEM_H
 #define EVENTLISTWIDGETITEM_H
 
-#include "CalendarEvent.h"
+#include "model/CalendarEvent.h"
 
 #include <QListWidgetItem>
 

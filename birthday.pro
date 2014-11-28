@@ -20,26 +20,26 @@ UI_DIR = .ui
 RCC_DIR = .rcc
 
 SOURCES += main.cpp \
-    CalendarWidget.cpp \
-    MainWindow.cpp \
-    CalendarEvent.cpp \
-    EventStorage.cpp \
-    EventListWidgetItem.cpp \
-    FindEventDialog.cpp
+    calendar/CalendarWidget.cpp \
+    calendar/EventListWidgetItem.cpp \
+    find/FindEventDialog.cpp \
+    model/CalendarEvent.cpp \
+    storage/EventStorage.cpp \
+    MainWindow.cpp
 
 HEADERS  += \
-    CalendarWidget.h \
-    MainWindow.h \
-    CalendarEvent.h \
-    EventStorage.h \
-    EventListWidgetItem.h \
-    FindEventDialog.h
+    calendar/CalendarWidget.h \
+    calendar/EventListWidgetItem.h \
+    find/FindEventDialog.h \
+    model/CalendarEvent.h \
+    storage/EventStorage.h \
+    MainWindow.h
 
 FORMS    += \
-    CalendarWidget.ui \
-    FindEventDialog.ui
+    calendar/CalendarWidget.ui \
+    find/FindEventDialog.ui
 
-TRANSLATIONS = birthday_pl.ts \
-               birthday_en.ts
+TRANSLATIONS = i18n/birthday_pl.ts \
+               i18n/birthday_en.ts
 
 RESOURCES = birthday.qrc

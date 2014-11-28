@@ -5,9 +5,9 @@
 
 #include "MainWindow.h"
 
-#include "CalendarEvent.h"
-#include "CalendarWidget.h"
-#include "FindEventDialog.h"
+#include "model/CalendarEvent.h"
+#include "calendar/CalendarWidget.h"
+#include "find/FindEventDialog.h"
 
 #include <QDebug>
 #include <QSettings>

@@ -6,10 +6,10 @@
 #ifndef CALENDAR_H
 #define CALENDAR_H
 
+#include "model/CalendarEvent.h"
+
 #include <QMultiMap>
 #include <QWidget>
-
-#include "CalendarEvent.h"
 
 namespace Ui {
     class CalendarWidget;

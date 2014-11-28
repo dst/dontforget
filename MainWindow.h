@@ -8,7 +8,7 @@
 
 #include <QtWidgets>
 
-#include "EventStorage.h"
+#include "storage/EventStorage.h"
 
 class CalendarWidget;
 
