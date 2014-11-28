@@ -1,2 +1,2 @@
-HEADERS += storage/EventStorage.h
-SOURCES += storage/EventStorage.cpp
+HEADERS += $$PWD/EventStorage.h
+SOURCES += $$PWD/EventStorage.cpp
