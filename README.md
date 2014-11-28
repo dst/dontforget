@@ -12,5 +12,4 @@ TODO
 - birthday -> event (manager, storage, etc.)
 - configurable birthdayStorage location
 - unit tests
-- Qt4 -> Qt5
 - split files in subdirectories
