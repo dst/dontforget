@@ -19,25 +19,16 @@ MOC_DIR =.moc
 UI_DIR = .ui
 RCC_DIR = .rcc
 
-SOURCES += main.cpp \
-    calendar/CalendarWidget.cpp \
-    calendar/EventListWidgetItem.cpp \
-    find/FindEventDialog.cpp \
-    model/CalendarEvent.cpp \
-    storage/EventStorage.cpp \
+HEADERS  += MainWindow.h
+
+SOURCES += \
+    main.cpp \
     MainWindow.cpp
 
-HEADERS  += \
-    calendar/CalendarWidget.h \
-    calendar/EventListWidgetItem.h \
-    find/FindEventDialog.h \
-    model/CalendarEvent.h \
-    storage/EventStorage.h \
-    MainWindow.h
-
-FORMS    += \
-    calendar/CalendarWidget.ui \
-    find/FindEventDialog.ui
+include(model/model.pri)
+include(calendar/calendar.pri)
+include(find/find.pri)
+include(storage/storage.pri)
 
 TRANSLATIONS = i18n/birthday_pl.ts \
                i18n/birthday_en.ts
