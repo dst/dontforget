@@ -1,6 +1,6 @@
 Description
 ==========
-Qt4 Calendar app for PC/laptop which remainds about events.
+Simple Qt5 calendar application for PC/laptop which remainds about yearly events.
 
 Compilation
 ===========
