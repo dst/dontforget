@@ -9,4 +9,3 @@ $ ./build.sh
 TODO
 ====
 - configurable birthdayStorage location
-- unit tests
